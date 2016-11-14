@@ -1,0 +1,11 @@
+# configure gem sources
+---
+
+- name: Shell command to configure gem sources
+  shell: /opt/sensu/embedded/bin/gem sources --add http://{{ sensu_checks_gem_source }}:8081/repository/rubygems-group/
+
+- name: Shell command to remove default sources
+  shell: /opt/sensu/embedded/bin/gem sources --remove https://rubygems.org/
+
+- name: Shell command to clear the local cache
+  shell: /opt/sensu/embedded/bin/gem sources -c 

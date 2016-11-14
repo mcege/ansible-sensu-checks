@@ -1,0 +1,15 @@
+{
+  "checks": {
+    "check_middleware_status": {
+      "command": "/opt/sensu/embedded/bin/ruby /opt/sensu/sekomy-plugins/plugins/check_middleware_status.rb -u {{ sensu_checks_middleware_full_address }}",
+      "handlers": [
+	      "email",
+	      "fmdaemon"
+      ],
+      "subscribers": [
+	      "mw"
+      ],
+      "interval": 300
+    }
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "checks": {
+    "check_wso2cep": {
+      "command": "/opt/sensu/embedded/bin/ruby /opt/sensu/embedded/bin/check-process.rb -p wso2cep",
+      "handlers": [
+	      "email",
+	      "fmdaemon"
+      ],
+      "subscribers": [
+	      "wso"
+      ],
+      "interval": 300
+    }
+  }
+}

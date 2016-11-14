@@ -1,0 +1,80 @@
+# configure json files
+---
+
+# create directories if MS
+- name: Mkdir /etc/sensu/conf.d/checks
+  file: path=/etc/sensu/conf.d/checks state=directory
+  when: sensu_server_boolean == true
+
+- name: Mkdir /etc/sensu/conf.d/handlers
+  file: path=/etc/sensu/conf.d/handlers state=directory
+  when: sensu_server_boolean == true
+
+- name: Mkdir /etc/sensu/conf.d/mutators
+  file: path=/etc/sensu/conf.d/mutators state=directory
+  when: sensu_server_boolean == true
+
+- name: Mkdir /opt/sensu/sekomy-plugins/handlers
+  file: path=/opt/sensu/sekomy-plugins/handlers state=directory recurse=yes
+  when: sensu_server_boolean == true
+
+- name: Mkdir /opt/sensu/sekomy-plugins/plugins
+  file: path=/opt/sensu/sekomy-plugins/plugins state=directory recurse=yes
+  when: sensu_server_boolean == true
+
+# create check json's if MS
+- name: Create check json's
+  template:
+    src=checks/{{item.template}}
+    dest=/etc/sensu/conf.d/checks/{{item.name}}
+    owner=sensu
+    group=sensu
+    backup=yes
+    mode=0644
+  with_items: "{{checks}}"  
+  when: sensu_server_boolean == true
+
+# create handler json's if MS
+- name: Create handler json's
+  template:
+    src=handlers/{{item.template}}
+    dest=/etc/sensu/conf.d/handlers/{{item.name}}
+    owner=sensu
+    group=sensu
+    backup=yes
+    mode=0644
+  with_items: "{{handlers}}"  
+  when: sensu_server_boolean == true
+
+# create mutator json if MS
+- name: Create mutator json
+  template: 
+    src=mutators/graphite.json.j2
+    dest=/etc/sensu/conf.d/mutators/graphite.json
+    owner=sensu
+    group=sensu
+    backup=yes
+    mode=0644
+  when: sensu_server_boolean == true
+
+# create /opt/sensu/sekomy-plugins/checks/check_middleware_status.rb
+- name: Create /opt/sensu/sekomy-plugins/plugins/check_middleware_status.rb
+  template:
+    src=check_middleware_status.rb.j2
+    dest=/opt/sensu/sekomy-plugins/plugins/check_middleware_status.rb
+    owner=root
+    group=root
+    backup=yes
+    mode=0755
+  when: sensu_server_boolean == true
+
+# create /opt/sensu/sekomy-plugins/handlers/fmdaemon.rb
+- name: Create /opt/sensu/sekomy-plugins/handlers/fmdaemon.rb
+  template:
+    src=fmdaemon.rb.j2
+    dest=/opt/sensu/sekomy-plugins/handlers/fmdaemon.rb
+    backup=yes
+    owner=root
+    group=root
+    mode=0755
+  when: sensu_server_boolean == true

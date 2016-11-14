@@ -1,0 +1,16 @@
+{
+  "checks": {
+    "check_redis_ping": {
+      "command": "/opt/sensu/embedded/bin/ruby /opt/sensu/embedded/bin/check-redis-ping.rb -h {{ sensu_checks_redis_host }} -p {{ sensu_checks_redis_port }}",
+      "handlers": [
+	      "email",
+	      "fmdaemon"
+      ],
+      "subscribers": [
+	      "dpic",
+        "ms"
+      ],
+      "interval": 300
+    }
+  }
+}

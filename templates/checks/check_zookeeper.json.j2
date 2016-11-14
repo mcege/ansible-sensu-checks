@@ -1,0 +1,15 @@
+{
+  "checks": {
+    "check_zookeeper": {
+      "command": "/opt/sensu/embedded/bin/ruby /opt/sensu/embedded/bin/check-process.rb -p zookeeper",
+      "handlers": [
+	      "email",
+	      "fmdaemon"
+      ],
+      "subscribers": [
+	      "zk"
+      ],
+      "interval": 300
+    }
+  }
+}

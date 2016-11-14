@@ -1,0 +1,15 @@
+{
+  "checks": {
+    "check_ntp": {
+      "command": "/opt/sensu/embedded/bin/ruby /opt/sensu/embedded/bin/check-ntp.rb",
+      "handlers": [
+	      "email",
+	      "fmdaemon"
+      ],
+      "subscribers": [
+	      "all"
+      ],
+      "interval": 300
+    }
+  }
+}

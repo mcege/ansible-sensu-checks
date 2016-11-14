@@ -1,0 +1,15 @@
+{
+  "checks": {
+    "check_storm": {
+      "command": "/opt/sensu/embedded/bin/ruby /opt/sensu/embedded/bin/check-process.rb -p storm",
+      "handlers": [
+	      "email",
+	      "fmdaemon"
+      ],
+      "subscribers": [
+	      "logger"
+      ],
+      "interval": 300
+    }
+  }
+}

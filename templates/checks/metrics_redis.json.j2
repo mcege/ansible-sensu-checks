@@ -1,0 +1,16 @@
+{
+  "checks": {
+    "metrics_redis": {
+      "type": metric,
+      "command": "/opt/sensu/embedded/bin/ruby /opt/sensu/embedded/bin/metrics-redis-graphite.rb -h {{ sensu_checks_redis_host }} -p {{ sensu_checks_redis_port }}",
+      "handlers": [
+	      "graphite"
+      ],
+      "subscribers": [
+	      "dpic",
+        "ms"
+      ],
+      "interval": 300
+    }
+  }
+}

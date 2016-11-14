@@ -1,0 +1,15 @@
+{
+  "checks": {
+    "metrics_memory": {
+      "type": metric,
+      "command": "/opt/sensu/embedded/bin/ruby /opt/sensu/embedded/bin/metrics-memory.rb",
+      "handlers": [
+	      "graphite"
+      ],
+      "subscribers": [
+	      "all"
+      ],
+      "interval": 300
+    }
+  }
+}

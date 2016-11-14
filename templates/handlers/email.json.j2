@@ -1,0 +1,12 @@
+{ 
+  "handlers": {
+    "email": {
+      "type": "pipe",
+      "command": "mail -s '{{ sensu_checks_mail_subject }}' -r  {{ sensu_checks_mail_sender_address }} devops@sekomyazilim.com.tr {{ sensu_checks_mail_recipient_secondary_address }}",
+      "severities": [
+        "critical",
+	      "unknown"
+      ]
+    }
+  }
+}

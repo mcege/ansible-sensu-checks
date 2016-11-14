@@ -1,0 +1,15 @@
+{
+  "checks": {
+    "check_disk": {
+      "command": "/opt/sensu/embedded/bin/ruby /opt/sensu/embedded/bin/check-disk-usage.rb -w 80 -c 90",
+      "handlers": [
+	      "email",
+	      "fmdaemon"
+      ],
+      "subscribers": [
+	      "all"
+      ],
+      "interval": 300
+    }
+  }
+}

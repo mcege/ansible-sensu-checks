@@ -1,0 +1,15 @@
+{
+  "checks": {
+    "check_postgresql": {
+      "command": "/opt/sensu/embedded/bin/ruby /opt/sensu/embedded/bin/check-process.rb -p postgres -C 2",
+      "handlers": [
+	      "email",
+	      "fmdaemon"
+      ],
+      "subscribers": [
+	      "db"
+      ],
+      "interval": 300
+    }
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "checks": {
+    "metrics_cpu_usage": {
+      "type": metric,
+      "command": "/opt/sensu/embedded/bin/ruby /opt/sensu/embedded/bin/metrics-cpu-pcnt-usage.rb",
+      "handlers": [
+	      "graphite"
+      ],
+      "subscribers": [
+	      "all"
+      ],
+      "interval": 300
+    }
+  }
+}

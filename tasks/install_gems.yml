@@ -1,0 +1,26 @@
+# install the required gems
+---
+
+#- name: Mkdir
+#  shell: mkdir /root/required_gems
+
+#- name: Inherit all the required gems
+#  shell: rsync -avHPS 172.27.98.91:/data/other/ftp/skyrepo/gem/* /root/required_gems/
+
+- name: Install the required gems
+  gem: name={{ item }} executable=/opt/sensu/embedded/bin/gem state=present
+  with_items:
+     - sensu-plugins-disk-checks
+     - sensu-plugins-redis
+     - sensu-plugins-process-checks
+     - sensu-plugins-postgres
+     - sensu-plugins-rabbitmq
+     - sensu-plugins-filesystem-checks
+     - sensu-plugins-memory-checks
+     - sensu-plugins-cpu-checks
+     - sensu-plugins-network-checks
+     - sensu-plugins-load-checks
+     - sensu-plugins-nginx
+     - sensu-plugins-graphite
+     - sensu-plugins-elasticsearch 
+     - sensu-plugins-ntp

@@ -1,0 +1,15 @@
+{
+  "checks": {
+    "check_flume": {
+      "command": "/opt/sensu/embedded/bin/ruby /opt/sensu/embedded/bin/check-process.rb -p flume",
+      "handlers": [
+	      "email",
+	      "fmdaemon"
+      ],
+      "subscribers": [
+	      "logger"
+      ],
+      "interval": 300
+    }
+  }
+}

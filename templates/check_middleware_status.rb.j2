@@ -1,0 +1,36 @@
+#! /usr/bin/env ruby
+#
+#   check-middleware
+#
+# DESCRIPTION:
+#   Check middleware status over REST API
+
+require 'sensu-plugin/check/cli'
+require "net/http"
+require "uri"
+require "json"
+
+class CheckMiddleware < Sensu::Plugin::Check::CLI
+  option :url,
+    description: 'API URL of the middleware',
+    short: '-u URL',
+    long: '--url URL',
+    default: 'http://127.0.0.1:8080/api/status'
+
+  option :ok_status,
+    description: 'OK Status',
+    short: '-os OKSTATUS',
+    long: '--ok-status OKSTATUS',
+    default: 'OK'
+
+  def run
+    uri = URI.parse(config[:url])
+    http = Net::HTTP.new(uri.host, uri.port)
+    request = Net::HTTP::Get.new(uri.request_uri)
+    response = http.request(request)
+    parsed_data = JSON.parse(response.body)
+    (parsed_data["STATUS"] == config[:ok_status]) ? (ok) : (critical) 
+  rescue => e
+    critical "Request Error: #{e.message}"
+  end
+end

@@ -1,0 +1,15 @@
+{
+  "checks": {
+    "check_ram": {
+      "command": "/opt/sensu/embedded/bin/ruby /opt/sensu/embedded/bin/check-ram.rb -w 10 -c 5",
+      "handlers": [
+	      "email",
+	      "fmdaemon"
+      ],
+      "subscribers": [
+	      "all"
+      ],
+      "interval": 300
+    }
+  }
+}

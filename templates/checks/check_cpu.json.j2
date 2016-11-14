@@ -1,0 +1,15 @@
+{
+  "checks": {
+    "check_cpu": {
+      "command": "/opt/sensu/embedded/bin/ruby /opt/sensu/embedded/bin/check-cpu.rb",
+      "handlers": [
+	      "email",
+	      "fmdaemon"
+      ],
+      "subscribers": [
+	      "all"
+      ],
+      "interval": 300
+    }
+  }
+}

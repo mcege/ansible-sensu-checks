@@ -1,0 +1,10 @@
+# check if sensu is installed
+---
+
+- name: Register if sensu is installed
+  command: rpm -q sensu
+  register: rpm_check
+
+- name: Exit if rpm is not installed
+  fail: msg="Exiting, this role requires sensu to be installed."
+  when: rpm_check.stdout.find('is not installed') != -1

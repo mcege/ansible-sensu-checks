@@ -1,0 +1,15 @@
+{
+  "checks": {
+    "check_es_cluster_status": {
+      "command": "/opt/sensu/embedded/bin/ruby /opt/sensu/embedded/bin/check-es-cluster-status.rb",
+      "handlers": [
+	      "email",
+	      "fmdaemon"
+      ],
+      "subscribers": [
+	      "logger"
+      ],
+      "interval": 300
+    }
+  }
+}

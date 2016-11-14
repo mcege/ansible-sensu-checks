@@ -1,0 +1,40 @@
+# default params for sensu-checks role
+---
+
+sensu_server_boolean: false
+
+# /etc/sensu/conf.d/checks/*.json params
+
+# check_postgresql_alive params
+sensu_checks_postgresql_host: "{{sky_db_host}}"
+sensu_checks_postgresql_user: "{{sky_db_admin_user}}"
+sensu_checks_postgresql_db: "{{default_postgresql_db_to_monitor}}"
+
+# check_redis_ping params
+sensu_checks_redis_host: "{{sky_redis_host}}"
+sensu_checks_redis_port: 6379
+
+# check_middleware_status params
+sensu_checks_middleware_full_address: "{{default_mw_address_to_monitor}}" # eg. http://172.27.98.82:8181/api/status
+
+# /etc/sensu/conf.d/handlers/*.json params
+
+# email.json params
+sensu_checks_mail_subject: "{{default_sensu_mail_subject}}"
+sensu_checks_mail_sender_address: "{{default_sensu_mail_sender}}"
+sensu_checks_mail_recipient_secondary_address: "{{default_sensu_mail_recipient}}"
+
+# fmdaemon.rb params
+sensu_checks_rabbitmq_host: "{{sky_rabbit_host}}"
+sensu_checks_rabbitmq_vhost: "{{sky_rabbit_vhost}}"
+sensu_checks_rabbitmq_user: "{{sky_rabbit_user}}"
+sensu_checks_rabbitmq_password: "{{sky_rabbit_password}}"
+sensu_checks_rabbitmq_queue_name: alarm_event
+
+# graphite.json params
+sensu_checks_graphite_host: "{{default_graphite_host}}"
+sensu_checks_graphite_port: "{{default_graphite_port}}"
+
+# offline repo gem path
+sensu_checks_gem_source: "{{default_gem_source}}"
+

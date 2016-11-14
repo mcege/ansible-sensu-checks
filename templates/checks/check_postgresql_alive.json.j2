@@ -1,0 +1,15 @@
+{
+  "checks": {
+    "check_postgresql_alive": {
+      "command": "/opt/sensu/embedded/bin/ruby /opt/sensu/embedded/bin/check-postgres-alive.rb -h {{ sensu_checks_postgresql_host }} -u {{ sensu_checks_postgresql_user }} -d {{ sensu_checks_postgresql_db }}",
+      "handlers": [
+	      "email",
+	      "fmdaemon"
+      ],
+      "subscribers": [
+	      "db"
+      ],
+      "interval": 300
+    }
+  }
+}

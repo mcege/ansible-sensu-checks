@@ -1,0 +1,17 @@
+# main tasks file for sensu-checks role
+---
+
+# check if sensu is insalled
+- include: check.yml
+
+# config gem sources
+#- include: config_gem_sources.yml
+
+# install the required gems
+#- include: install_gems.yml
+
+# config json files
+- include: config.yml
+
+# restart sensu-*
+- include: restart.yml

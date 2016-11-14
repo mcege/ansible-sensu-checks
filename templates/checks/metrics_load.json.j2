@@ -1,0 +1,15 @@
+{
+  "checks": {
+    "metrics_load": {
+      "type": metric,
+      "command": "/opt/sensu/embedded/bin/ruby /opt/sensu/embedded/bin/metrics-load.rb",
+      "handlers": [
+	      "graphite"
+      ],
+      "subscribers": [
+	      "all"
+      ],
+      "interval": 300
+    }
+  }
+}

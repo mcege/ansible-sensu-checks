@@ -1,0 +1,16 @@
+{
+  "checks": {
+    "check_rabbitmq_network_partitions": {
+      "command": "/opt/sensu/embedded/bin/ruby /opt/sensu/embedded/bin/check-rabbitmq-network-partitions.rb",
+      "handlers": [
+	      "email",
+	      "fmdaemon"
+      ],
+      "subscribers": [
+	      "dpic",
+        "ms"
+      ],
+      "interval": 300
+    }
+  }
+}

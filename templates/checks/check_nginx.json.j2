@@ -1,0 +1,16 @@
+{
+  "checks": {
+    "check_nginx": {
+      "command": "/opt/sensu/embedded/bin/ruby /opt/sensu/embedded/bin/check-process.rb -p nginx",
+      "handlers": [
+	      "email",
+	      "fmdaemon"
+      ],
+      "subscribers": [
+	      "dpic",
+        "dpicman"
+      ],
+      "interval": 300
+    }
+  }
+}

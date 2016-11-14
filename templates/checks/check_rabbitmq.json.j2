@@ -1,0 +1,16 @@
+{
+  "checks": {
+    "check_rabbitmq": {
+      "command": "/opt/sensu/embedded/bin/ruby /opt/sensu/embedded/bin/check-process.rb -p rabbitmq",
+      "handlers": [
+	      "email",
+	      "fmdaemon"
+      ],
+      "subscribers": [
+	      "dpic",
+        "ms"
+      ],
+      "interval": 300
+    }
+  }
+}
